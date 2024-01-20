@@ -1,0 +1,63 @@
+{% load static %}
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+  <div class="app-brand demo">
+    <a href="{% url "dashboard" %}" class="app-brand-link gap-2">
+      <span class="app-brand-logo">
+        <img src="/media/warwick-logo.PNG" width="100" class="img-fluid" alt="">
+      </span>
+    </a>
+
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+      <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+      <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+    </a>
+  </div>
+
+    <div class="menu-inner-shadow"></div>
+  <ul class="menu-inner py-1">
+    <li class="menu-item {{active}}">
+      <a href="{% url "dashboard" %}" class="menu-link">
+        <i class="menu-icon tf-icons ti ti-home"></i>
+        <div>Dashboard</div>
+      </a>
+    </li>
+    {% if request.user.is_superuser %}
+      <li class="menu-item {{active1}} ">
+        <a href="{% url "user_view" %}" class="menu-link">
+          <i class="menu-icon tf-icons ti ti-crown"></i>
+          <div data-i18n="user">Users</div>
+        </a>
+      </li>
+      <li class="menu-item {{active2}} ">
+        <a href="{% url "cafe" %}" class="menu-link">
+          <i class="menu-icon tf-icons ti ti-coffee"></i>
+          <div data-i18n="cafe">Cafés</div>
+        </a>
+      </li>
+      <li class="menu-item {{active3}} ">
+        <a href="{% url "restaurant" %}" class="menu-link">
+          <i class="menu-icon tf-icons ti ti-heart"></i>
+          <div data-i18n="restaurant">Restaurants</div>
+        </a>
+      </li>
+      <li class="menu-item {{active4}} ">
+        <a href="{% url "dish" %}" class="menu-link">
+          <i class="menu-icon tf-icons ti ti-pizza"></i>
+          <div data-i18n="dish">Dishes</div>
+        </a>
+      </li>
+      <li class="menu-item {{active5}} ">
+        <a href="{% url "team" %}" class="menu-link">
+          <i class="menu-icon tf-icons ti ti-user"></i>
+          <div data-i18n="team">Team</div>
+        </a>
+      </li>
+      <li class="menu-item {{active6}} ">
+        <a href="{% url "reviews" %}" class="menu-link">
+          <i class="menu-icon tf-icons ti ti-star"></i>
+          <div data-i18n="reviews">Reviews</div>
+        </a>
+      </li>
+      {% endif %}
+  </ul>
+</aside>

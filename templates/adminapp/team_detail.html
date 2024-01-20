@@ -1,0 +1,117 @@
+{% include 'includes/head.html' %}
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+        {% include "adminapp/includes/aside.html" %}
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+          {% include "adminapp/includes/navbar.html" %}
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row invoice-add">
+                <!-- Invoice Add-->
+                <div class="col-lg-12 col-12 mb-lg-0 mb-4">
+                  <div class="card invoice-preview-card">
+                    <div class="card-body">
+                          <div class="card-datatable table-responsive pt-0">
+                            <div class="container mt-3 mb-3">
+                                <form id="formAuthentication" class="mb-3" action="" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                                    <h3 class="text-center mt-2">Update Team Member</h3>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="mb-3">
+                                                                <label for="cafe" class="form-label">Cafe & Restaurant</label>
+                                                                <select class="form-control mt-1 mb-2" id="cafe" name="cafe" required>
+                                                                    {% for caf in cafes %}
+                                                                        <option value="{{ caf.id }}" {% if caf.id == mem.cafe.id %}selected{% endif %}>{{ caf.cafe_name }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>    
+                                                            <div class="mb-3">
+                                                                <label for="post" class="form-label">Post</label>
+                                                                <input
+                                                                required
+                                                                  type="text"
+                                                                  class="form-control"
+                                                                  id="post"
+                                                                  name="post"
+                                                                  value="{{mem.post}}"
+                                                                  placeholder="Enter member post"
+                                                                  autofocus
+                                                                />
+                                                              </div>     
+                                                              <div class="form-group">
+                                                                <label for="image">Image</label>
+                                                                <input type="file" accept="image/*"  class="form-control-file mt-1 mb-2" id="image" name="image">
+                                                                <img src="{{mem.image.url}}" width="100" alt="" class="mb-2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="mb-3">
+                                                                <label for="name" class="form-label">Member Name</label>
+                                                                <input
+                                                                required
+                                                                  type="text"
+                                                                  class="form-control"
+                                                                  id="name"
+                                                                  name="name"
+                                                                  value={{mem.name}}
+                                                                  placeholder="Enter member name"
+                                                                  autofocus
+                                                                />
+                                                            </div>  
+                                                          <div class="mb-3 form-password-toggle">
+                                                            <div class="d-flex justify-content-between">
+                                                              <label class="form-label" for="description">Description</label>
+                                                            </div>
+                                                            <div class="input-group input-group-merge">
+                                                              <textarea id="description" class="form-control" name="description"
+                                                              >{{mem.description}}</textarea>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                    <div class="mb-3 mt-3">
+                                      <button class="btn btn-primary d-grid w-100" type="submit">Update Member</button>
+                                    </div>
+                                  </form>
+                            </div>  
+                          </div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            {% include "includes/footer_aside.html" %}
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+
+      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+      <div class="drag-target"></div>
+    </div>
+    <!-- / Layout wrapper -->
+    {% include 'includes/messages.html' %}
+{% include 'includes/footer.html' %}

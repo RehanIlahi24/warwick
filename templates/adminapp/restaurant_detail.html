@@ -1,0 +1,148 @@
+{% include 'includes/head.html' %}
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+        {% include "adminapp/includes/aside.html" %}
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+          {% include "adminapp/includes/navbar.html" %}
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row invoice-add">
+                <!-- Invoice Add-->
+                <div class="col-lg-12 col-12 mb-lg-0 mb-4">
+                  <div class="card invoice-preview-card">
+                    <div class="card-body">
+                          <div class="card-datatable table-responsive pt-0">
+                            <div class="container mt-3 mb-3">
+                                <form id="formAuthentication" class="mb-3" action="" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                                    <h3 class="text-center mt-2">Update Restaurant</h3>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="mb-3">
+                                                                <label for="cafe" class="form-label">Restaurant Name</label>
+                                                                <input
+                                                                required
+                                                                  type="text"
+                                                                  class="form-control"
+                                                                  id="cafe"
+                                                                  name="cafe"
+                                                                  value={{caf.cafe_name}}
+                                                                  placeholder="Enter your restaurant name"
+                                                                  autofocus
+                                                                />
+                                                            </div>    
+                                                            <div class="mb-3">
+                                                                <label for="open_time" class="form-label">Opening time</label>
+                                                                <input
+                                                                required
+                                                                  type="time"
+                                                                  class="form-control"
+                                                                  id="open_time"
+                                                                  name="open_time"
+                                                                  value="{{ caf.opening_time|date:'H:i' }}"
+                                                                  placeholder="Enter cafe opening time"
+                                                                  autofocus
+                                                                />
+                                                              </div>     
+                                                              <div class="mb-3">
+                                                                <label for="contact" class="form-label">Contact Number</label>
+                                                                <input
+                                                                
+                                                                  type="text"
+                                                                  class="form-control"
+                                                                  id="contact"
+                                                                  name="contact"
+                                                                  value="{{ caf.contact_number|safe }}"
+                                                                  placeholder="Enter restaurant contact number"
+                                                                  autofocus
+                                                                />
+                                                              </div>
+                                                              <div class="form-group">
+                                                                <label for="image">Image</label>
+                                                                <input type="file" accept="image/*"  class="form-control-file mt-1 mb-2" id="image" name="image">
+                                                                <img src="{{caf.image.url}}" width="100" alt="" class="mb-2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="mb-3">
+                                                                <label for="location" class="form-label">Location</label>
+                                                                <input
+                                                                required
+                                                                  type="text"
+                                                                  class="form-control"
+                                                                  id="location"
+                                                                  name="location"
+                                                                  value={{caf.location}}
+                                                                  placeholder="Enter restaurant location"
+                                                                  autofocus
+                                                                />
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="closing_time" class="form-label">Closing Time</label>
+                                                                <input
+                                                                required
+                                                                  type="time"
+                                                                  class="form-control"
+                                                                  id="closing_time"
+                                                                  name="closing_time"
+                                                                  value="{{ caf.closing_time|date:'H:i' }}"
+                                                                  placeholder="00:00:00"
+                                                                  autofocus
+                                                                />
+                                                          </div>      
+                                                          <div class="mb-3 form-password-toggle">
+                                                            <div class="d-flex justify-content-between">
+                                                              <label class="form-label" for="description">Description</label>
+                                                            </div>
+                                                            <div class="input-group input-group-merge">
+                                                              <textarea id="description" class="form-control" name="description"
+                                                              >{{caf.description}}</textarea>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                    <div class="mb-3">
+                                      <button class="btn btn-primary d-grid w-100" type="submit">Update Restaurant</button>
+                                    </div>
+                                  </form>
+                            </div>  
+                          </div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            {% include "includes/footer_aside.html" %}
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+
+      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+      <div class="drag-target"></div>
+    </div>
+    <!-- / Layout wrapper -->
+    {% include 'includes/messages.html' %}
+{% include 'includes/footer.html' %}

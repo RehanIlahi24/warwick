@@ -1,0 +1,205 @@
+{% load static %}
+{% include "includes/head.html" %}
+   <!-- Layout wrapper -->
+   <div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
+     <div class="layout-container">
+       <!-- Navbar -->
+       {% include "includes/navbar.html" with active3=active3  %}
+       <!-- Navbar -->
+
+       <!-- Layout container -->
+       <div class="layout-page">
+         <!-- Content wrapper -->
+         <div class="content-wrapper">
+           <!-- aside -->
+           {% include "includes/aside.html" %}
+           <!-- / aside -->
+
+           <!-- Content -->
+           
+           <!-- caousel -->
+            <img src="/media/resturant/pexels-elevate-1267320 (1).jpg" class="d-block w-100" alt="...">
+
+           
+           <div class="container-xxl flex-grow-1 container-p-y">
+             <div class="row">
+               <div class="container p-5">
+                   <h2>Culinary Excellence Unleashed at Our Campus Restaurants</h2>
+                   <h4>Embark on a gastronomic journey at Warwick University's exquisite restaurants. More than just dining, we strive to elevate your experience by infusing freshness into every dish. Our campus restaurants, managed by Warwick Eats, are committed to delivering an atmosphere where culinary excellence takes center stage.</h4>
+                   <ul>
+                       <li><p><span class="fw-bold">Savor the Freshness of Local Ingredients:</span>
+                        Immerse yourself in the richness of locally sourced flavors. Our restaurants take pride in crafting dishes from seasonal, locally-sourced ingredients, ensuring a delightful culinary experience that not only tantalizes your taste buds but also supports our local communities.</p></li>
+                       <li><p><span class="fw-bold">Redefined Restaurant Classics:</span>
+                        Warwick Eats is dedicated to revolutionizing restaurant classics. From delectable lunch options to indulgent dinner selections, our menus are curated to bring a burst of freshness to your dining moments, redefining the standards of campus culinary offerings.</p></li>
+                       <li><p><span class="fw-bold">Every Dish, an Artful Experience:</span>
+                        Our commitment goes beyond serving meals; we aim to create moments of culinary artistry. Visit our campus restaurants and experience a culinary journey where each bite is an invitation to relish and savor the excellence of locally-inspired, freshly prepared offerings.</p></li>
+                   </ul>  
+               </div>
+
+               <!-- Images -->
+             <h5 class="pb-1 mb-4">Breakfast Lunch & Dinner</h5>
+             <div class="row mb-5">
+               <div class="col-md-6 col-lg-4 mb-3">
+                 <div class="card h-80">
+                   <img class="card-img-top" src="/media/resturant/pexels-jane-doan-916904.jpg" alt="Card image cap" />
+                   <div class="card-body">
+                     <h5 class="card-title">Breakfast</h5>
+                     <p class="card-text">
+                      Ignite your day with a melody of flavors, experiencing energizing breakfast delights at our refined campus restaurants.
+                      <br>
+                      <br>
+                     </p>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-md-6 col-lg-4 mb-3">
+                 <div class="card h-100">
+                   <img class="card-img-top" src="/media/resturant/pexels-jill-wellington-257816.jpg" alt="Card image cap"/>
+                   <div class="card-body">
+                     <h5 class="card-title">Lunch</h5>
+                     <p class="card-text">
+                      Elevate your midday reprieve with a diverse selection of flavorful options, meticulously crafted for your delight at our campus restaurants.
+                     </p>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-md-6 col-lg-4 mb-3">
+                 <div class="card h-100">
+                   <img class="card-img-top" src="/media/resturant/pexels-ella-olsson-1640777 (1).jpg" alt="Card image cap"/>
+                   <div class="card-body">
+                     <h5 class="card-title">Dinner</h5>
+                     <p class="card-text">
+                      Transform your evenings into gastronomic adventures with our exquisite dinner offerings, curated to enchant your palate at our sophisticated campus restaurants.
+                     </p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <!--/ Images -->
+
+             {% if rest_famous %}
+               <div class="text-center mt-5">
+                <h2>Famous Restaurants</h2>
+               </div>
+               {% for rest in rest_famous %}
+               <div class="container d-lg-flex d-md-flex d-xl-flex flex-lg-row flex-md-column flex-xl-row flex-sm-column mt-5 mb-5">
+                {% if forloop.counter == 2 %}
+                  <div class="ms-lg-5 ms-xl-5 ms-md-0 ms-sm-0 mb-lg-0 mb-xl-0 mb-md-3 mb-sm-3 mb-3">
+                    <div class="d-flex">
+                      <h3>{{rest.cafe_name}}</h3>
+                      {% if rest.closing_time < time_now %}
+                      <p class="mt-2 ms-3 text-danger">Closed</p>
+                      {% else %}
+                      <p class="mt-2 ms-3 text-success">Open</p>
+                      {% endif %}
+                     </div>
+                     <p>Location : {{rest.location}}</p>
+                     <p>{{rest.description}}</p>
+                     <p>Opening Time : {{rest.opening_time}}</p>
+                     <p>Closing Time : {{rest.closing_time}}</p>
+                     <p>Contact Number : {{rest.contact_number}}</p>
+                     <a href="{% url "main-restaurant_detail" rest.id %}" class="btn btn-outline-primary">See More</a>
+                </div>
+                <img src="{{rest.image.url}}" width="540px" alt="" class="order-sm-last order-md-last order-lg-first order-xl-first img-fluid rounded">
+                {% else %}
+                 <div class="me-lg-5 me-xl-5 me-md-0 me-sm-0 mb-lg-0 mb-xl-0 mb-md-3 mb-sm-3 mb-3">
+                   <div class="d-flex">
+                    <h3>{{rest.cafe_name}}</h3>
+                    {% if rest.closing_time < time_now %}
+                    <p class="mt-2 ms-3 text-danger">Closed</p>
+                    {% else %}
+                    <p class="mt-2 ms-3 text-success">Open</p>
+                    {% endif %}
+                   </div>
+                   <p>Location : {{rest.location}}</p>
+                   <p>{{rest.description}}</p>
+                   <p>Opening Time : {{rest.opening_time}}</p>
+                   <p>Closing Time : {{rest.closing_time}}</p>
+                   <p>Contact Number : {{rest.contact_number}}</p>
+                   <a href="{% url "main-restaurant_detail" rest.id %}" class="btn btn-outline-primary">See More</a>
+                 </div>
+                 <img src="{{rest.image.url}}" class="img-fluid rounded" width="600" alt="">
+                 {% endif %}
+               </div>
+               {% endfor %}
+              {% endif %}
+            <!-- More Restaurants -->
+            {% if rest_ob %}
+              <div class="text-center mt-3 mb-3">
+                  <h3 class="pb-1 mb-4 mt-5">More Restaurants</h3>
+              </div>
+             <div class="row mb-5">
+              {% for rest in rest_ob %}
+               <div class="col-md-6 col-lg-4 mb-3">
+                 <div class="card h-80">
+                   <img class="card-img-top" src="{{rest.image.url}}" alt="Card image cap" />
+                   <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title">{{rest.cafe_name}}</h5>
+                            {% if rest.closing_time < time_now %}
+                            <p class="ms-3 text-danger">Closed</p>
+                            {% else %}
+                            <p class="ms-3 text-success">Open</p>
+                            {% endif %}
+                        </div>
+                        <p>Location : {{rest.location}}</p>
+                        <p class="card-text">{{rest.description}}</p>
+                        <a href="{% url "main-restaurant_detail" rest.id %}" class="btn btn-outline-primary">See More</a>
+                   </div>
+                 </div>
+               </div>
+               {% endfor %}
+             </div>
+          {% endif %}
+             <!--/ More Restaurants -->
+
+               <div class="text-center mt-5 pt-5">
+                 <h2>Future Plans</h2>
+               </div>
+               <div class="container d-lg-flex d-md-flex d-xl-flex flex-lg-row flex-md-column flex-xl-row flex-sm-column mt-5 mb-5">
+                 <div class="me-lg-5 me-xl-5 me-sm-0 me-md-0">
+                   <h3>Table Reservation for Tomorrow's Delight</h3>
+                   <p>Discover the ease and convenience of securing your spot at our vibrant dining venues with our upcoming table reservation feature. Whether you're planning a special celebration, a romantic evening, or a casual get-together, reserving a table ensures a seamless dining experience. Say goodbye to waiting times and hello to a reserved seat at tomorrow's delight.
+                     <br>
+                     <br>
+                   Embark on a journey of culinary convenience with our soon-to-launch online ordering service. Satisfy your cravings from the comfort of your home or office, exploring a diverse menu crafted for every taste. With just a click, experience the joy of delightful dishes delivered right to your doorstep. Uncomplicate your dining decisions and look forward to a world of flavors at your fingertips.</p>
+                 </div>
+                 <img src="/media/images/pexels-clem-onojeghuo-60258.jpg" class="img-fluid rounded" width="600" alt="">
+               </div>
+               <div class="container d-lg-flex d-md-flex d-xl-flex flex-lg-row flex-md-column flex-xl-row flex-sm-column mt-5 mb-5">
+                 <div class="ms-lg-5 ms-xl-5 ms-md-0 ms-sm-0">
+                   <h3>Online Ordering, Anytime, Anywhere</h3>
+                   <p>Indulge in a gastronomic adventure without stepping out of the comfort of your space. Our eagerly awaited online ordering system is on the brink of launch, promising to bring the diverse and tantalizing flavors of our menu directly to your doorstep. 
+                     <br>
+                     <br>
+                   From delightful breakfast bites to sumptuous dinner creations, brace yourself for the unparalleled convenience of placing orders online and savoring the exquisite offerings meticulously crafted by our skilled chefs. Stay tuned as we prepare to redefine your dining experience, making the joy of relishing our culinary creations just a click away. Get ready to elevate your culinary journey with the seamless convenience of ordering your favorites at the touch of a button.</p>
+                 </div>
+                 <img src="/media/images/pexels-erik-mclean-16052344.jpg" width="540px" alt="" class="order-sm-last order-md-last order-lg-first order-xl-first img-fluid rounded">
+               </div>
+
+             </div>
+           </div>
+           <!--/ Content -->
+
+           <!-- Footer -->
+           {% include "includes/footer_aside.html" %}
+           <!-- / Footer -->
+
+           <div class="content-backdrop fade"></div>
+         </div>
+         <!--/ Content wrapper -->
+       </div>
+
+       <!--/ Layout container -->
+     </div>
+   </div>
+
+   <!-- Overlay -->
+   <div class="layout-overlay layout-menu-toggle"></div>
+
+   <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+   <div class="drag-target"></div>
+
+   <!--/ Layout wrapper -->
+   {% include 'includes/messages.html' %}
+   {% include "includes/footer.html" %}

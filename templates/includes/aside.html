@@ -1,0 +1,36 @@
+{% load static %}
+
+<aside id="layout-menu" class="layout-menu-horizontal menu-horizontal menu bg-menu-theme flex-grow-0">
+    <div class="container-xxl d-flex h-100">
+      <ul class="menu-inner">
+        <!-- Dashboards -->
+        <li class="menu-item {{active}}">
+          <a href="{% url "index" %}" class="menu-link">
+            <i class="menu-icon tf-icons ti ti-smart-home"></i>
+            <div data-i18n="Home">Home</div>
+          </a>
+        </li>  
+        <li class="menu-item {{active2}}">
+          <a href="{% url "main-cafe" %}" class="menu-link">
+            <i class="menu-icon tf-icons ti ti-coffee"></i>
+            <div data-i18n="Cafés">Cafés</div>
+          </a>
+        </li>
+        <!-- Layouts -->
+        <li class="menu-item {{active3}}">
+          <a href="{% url "main-restaurant" %}" class="menu-link">
+            <i class="menu-icon tf-icons ti ti-heart"></i>
+            <div data-i18n="Restaurants">Restaurants</div>
+          </a>
+        </li>
+        <!-- Apps -->
+        <li class="menu-item {{active4}}">
+          <a href="{% url "main-team" %}" class="menu-link ">
+            <i class="menu-icon tf-icons ti ti-user"></i>
+            <div data-i18n="Team">Team</div>
+          </a>
+        </li>       
+      </ul>
+    </div>
+  </aside>
+  <!-- / Menu -->
